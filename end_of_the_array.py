@@ -8,7 +8,7 @@ Given the array [1, 2, 1, 0, 0], we can't reach the end, so return false.
 
 
 def end_reachable(arr):
-    if len(arr) == 1:
+    if len(arr) < 1:
         return True
 
     for i in range(2, len(arr) + 1):
