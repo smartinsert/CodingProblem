@@ -57,18 +57,19 @@ def count_swaps(arr):
 
 
 def minimum_bribes(q):
-    moves = 0
-    for pos, val in enumerate(q):
-        if (val-1) - pos > 2:
-            return "Too chaotic"
-        for j in range(max(0, val-2), pos):
-            if q[j] > val:
-                moves += 1
-    return moves
+    total_bribes = 0
+    q = [p-1 for p in q]
+    for current_position, expected_position in enumerate(q):
+        if expected_position - current_position > 2:
+            return 'Too chaotic'
+        for i in range(max(0, expected_position-1), current_position):
+            if q[i] > expected_position:
+                total_bribes += 1
 
 
 if __name__ == '__main__':
-    # print(min_bribes([2, 5, 1, 3, 4]))
-    print(min_bribes([2, 1, 5, 3, 4]))
-    print(min_bribes([1, 2, 5, 3, 7, 8, 6, 4]))
-    # print(min_bribes([5, 1, 2, 3, 7, 8, 6, 4]))
+    print(minimum_bribes([2, 1, 5, 3, 4]))
+    print(minimum_bribes([2, 5, 1, 3, 4]))
+    print(minimum_bribes([5, 1, 2, 3, 7, 8, 6, 4]))
+
+
