@@ -8,3 +8,4 @@ def get_max_profit(prices, fee, reserve=0, buyable=True):
 
 if __name__ == '__main__':
     assert get_max_profit([1, 3, 2, 8, 4, 10], 2) == 9
+    print(get_max_profit([1, 2, 100], 0))
