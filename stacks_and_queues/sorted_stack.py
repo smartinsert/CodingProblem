@@ -1,42 +1,71 @@
-import sys
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+    def __str__(self):
+        return str(self and self.value) + ',' + str(self and self.next)
 
 
-class SortedStack:
+class Stack:
     def __init__(self):
-        self.original = list()
-        self.largest = -1 * sys.maxsize
+        self.top = None
+
+    def __str__(self):
+        return str(self.top)
 
     def push(self, value):
-        self.largest = value if value > self.largest else self.largest
-        if not self.original:
-            self.original.append(value)
-        else:
-            last_value = self.original.pop()
-            if self.largest > value > last_value:
-                self.original.append(last_value)
-                self.original.append(value)
-            else:
-                self.original.append(value)
-                self.original.append(last_value)
+        self.top = Node(value, self.top)
 
     def pop(self):
-        return self.largest
+        if not self.top:
+            return None
+        popped_element = self.top
+        self.top = self.top.next
+        return popped_element.value
 
-    def peek(self):
-        return self.largest
 
-    def is_empty(self):
-        return not self.original
-
-    def sorted_stack(self):
-        self.original.append(self.largest)
-        return self.original
+def sort_stack(stack):
+    previous = stack.pop()
+    current = stack.pop()
+    temp = Stack()
+    while current:
+        if previous < current:
+            temp.push(previous)
+            previous = current
+            current = stack.pop()
+        else:
+            temp.push(current)
+            current = stack.pop()
+        if not current and previous:
+            temp.push(previous)
+    sorted = True
+    previous = temp.pop()
+    current = temp.pop()
+    while current:
+        if previous > current:
+            stack.push(previous)
+            previous = current
+            current = temp.pop()
+        else:
+            stack.push(current)
+            current = temp.pop()
+            sorted = False
+        if not current and previous:
+            stack.push(previous)
+    if sorted:
+        return stack
+    else:
+        return sort_stack(stack)
 
 
 if __name__ == '__main__':
-    s = SortedStack()
-    s.push(6)
-    s.push(3)
-    s.push(9)
-    s.push(1)
-    print(s.sorted_stack())
+    s = Stack()
+    s.push(10)
+    s.push(30)
+    s.push(70)
+    s.push(40)
+    s.push(80)
+    s.push(20)
+    s.push(90)
+    print(sort_stack(s))
