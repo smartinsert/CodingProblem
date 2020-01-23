@@ -1,3 +1,8 @@
+"""
+Given a string, find the length of the longest substring which has no repeating characters.
+"""
+
+
 def non_repeat_substring(string):
     window_start = 0
     max_length = 0
@@ -20,4 +25,4 @@ def non_repeat_substring(string):
 
 
 if __name__ == '__main__':
-    print(non_repeat_substring('aabccbb'))
+    print(non_repeat_substring('aabcdefcbb'))

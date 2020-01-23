@@ -22,3 +22,4 @@ def recursive_number_of_vowels(string, n):
 
 if __name__ == '__main__':
     print(iterative_number_of_vowels('Educative'))
+    print(recursive_number_of_vowels('Educative', len('Educative')))
