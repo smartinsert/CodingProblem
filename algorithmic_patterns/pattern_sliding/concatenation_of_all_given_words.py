@@ -57,5 +57,4 @@ def find_word_concatenation_1(str, words):
 
 
 if __name__ == '__main__':
-    print(find_word_concatenation('catfoxcat', ['cat', 'fox']))
-    print(find_word_concatenation('catfoxcat', ['cat', 'fox']))
+    print(find_word_concatenation_1('catfoxcat', ['cat', 'fox']))
