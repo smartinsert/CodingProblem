@@ -17,18 +17,20 @@ class Interval:
 def insert_interval(existing_intervals, new_interval):
     # We have sorted non-overlapping intervals
     merged = []
-    for idx, interval in enumerate(existing_intervals):
-        if new_interval.start > interval.end:
-            merged.append(str(interval))
-        elif new_interval.start < interval.end:
-            end = max(new_interval.end, interval.end)
-            if new_interval.end > interval.start:
-                start = min(new_interval.start, interval.start)
-            else:
-                start = interval.start
-            interval_to_merge = Interval(start, end)
-            merged.append(str(interval_to_merge))
-            new_interval = interval_to_merge
+    i = 0
+    while i < len(existing_intervals) and existing_intervals[i].end < new_interval.start:
+        merged.append(str(existing_intervals[i]))
+        i += 1
+
+    # if the existing interval overlaps with the new interval
+    while i < len(existing_intervals) and existing_intervals[i].start <= new_interval.end:
+        new_interval.start = min(existing_intervals[i].start, new_interval.start)
+        new_interval.end = max(existing_intervals[i].end, new_interval.end)
+        i += 1
+    merged.append(str(new_interval))
+    while i < len(existing_intervals):
+        merged.append(str(existing_intervals[i]))
+        i += 1
     return merged
 
 

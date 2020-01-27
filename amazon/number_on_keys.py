@@ -16,7 +16,7 @@ def combinations(digits):
 def recursive_combination(result: list, digits: str, mapping: list, current_string: str, index: int):
     if index == len(digits):
         result.append(current_string)
-        return 
+        return
     letters = mapping[int(digits[index])]
     for i in range(len(letters)):
         recursive_combination(result, digits, mapping, current_string + letters[i], index + 1)
