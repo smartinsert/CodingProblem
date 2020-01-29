@@ -56,5 +56,19 @@ def find_word_concatenation_1(str, words):
     return result_indices
 
 
+def count_combinations(word):
+    if len(word) <= 3:
+        return 1
+    return count_combinations(word[0:3]) + count_combinations(word[1:])
+
+
+def total_combinations(word, sum_till_now=0):
+    if len(word) < 3:
+        return sum_till_now
+    sum_till_now += count_combinations(word)
+    return total_combinations(word[1:], sum_till_now)
+
+
 if __name__ == '__main__':
-    print(find_word_concatenation_1('catfoxcat', ['cat', 'fox']))
+    # print(find_word_concatenation_1('catfoxcat', ['cat', 'fox']))
+    print(total_combinations('catfoxcat'))
