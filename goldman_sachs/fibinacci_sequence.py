@@ -32,4 +32,3 @@ def fibonacci_dp(number):
 if __name__ == '__main__':
     print(recursive_fibonacci(9))
     print(iterative_fibonnaci(9))
-    print(fibonacci_dp(9))
