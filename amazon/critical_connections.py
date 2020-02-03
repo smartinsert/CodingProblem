@@ -1,10 +1,3 @@
-"""
-You are given an undirected connected graph. An articulation point (or cut vertex) is defined as a vertex which,
- when removed along with associated edges, makes the graph disconnected (or more precisely, increases the number of
- connected components in the graph). The task is to find all articulation points in the given graph.
-
-Input: numNodes = 7, numEdges = 7, edges = [[0, 1], [0, 2], [1, 3], [2, 3], [2, 5], [5, 6], [3, 4]]
-"""
 from collections import defaultdict
 
 
@@ -17,13 +10,14 @@ class Graph:
         self.disc = [float('inf')] * self.V
         self.visited = [False] * self.V
         self.time = 0
+        self.bridges = []
         self.articulation_points = []
 
     def add_edge(self, v, u):
         self.adj_list[u].append(v)
         self.adj_list[v].append(u)
 
-    def find_articulation_point(self, u):
+    def find_bridges(self, u):
         # to keep track of which vertices are visited
         self.visited[u] = True
         # to check the lowest vertex that this node can reach through its children
@@ -41,7 +35,7 @@ class Graph:
                 # mark the parent of v as u as it was first discovered by u
                 self.parent[v] = u
                 # depth first search over its children
-                self.find_articulation_point(v)
+                self.find_bridges(v)
 
                 # once we complete the dfs and come back here
                 # we update the lowest vertex that we can reach from any child of u
@@ -51,6 +45,7 @@ class Graph:
                 # then it is assumed that v does not have a way back to u
                 # and therefore v and u are not in a cycle and hence a bridge
                 if self.low[v] > self.disc[u]:
+                    self.bridges.append([u, v])
                     self.articulation_points.append(u)
 
 # if v is already visited then we check if v is the parent of u, if yes then that means no need to update the lowest
@@ -62,15 +57,17 @@ class Graph:
 
 
 if __name__ == '__main__':
-    n = 7
-    connections = [[0, 1], [0, 2], [1, 3], [2, 3], [2, 5], [5, 6], [3, 4]]
-
-    g = Graph(n)
-    for i in connections:
+    g = Graph(7)
+    # edges = [[1, 2], [1, 3], [3, 4], [1, 4], [4, 5]]
+    # edges = [[1, 2], [1, 3], [2, 3], [3, 4], [3, 6], [4, 5], [6, 7], [6, 9], [7, 8], [8, 9]]
+    edges = [[0, 1], [0, 2], [1, 3], [2, 3], [2, 5], [5, 6], [3, 4]]
+    # edges = [[1, 2], [1, 3], [2, 3], [2, 4], [2, 5], [4, 6], [5, 6]]
+    for i in edges:
         g.add_edge(i[0], i[1])
 
     for j in range(1, g.V):
         if not g.visited[j]:
-            g.find_articulation_point(j)
+            g.find_bridges(j)
 
+    print(g.bridges)
     print(g.articulation_points)
