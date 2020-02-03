@@ -32,5 +32,5 @@ def find_all_anagrams(source, pattern):
 
 
 if __name__ == '__main__':
-    print(find_all_anagrams('ppqp', 'pq'))
+    # print(find_all_anagrams('ppqp', 'pq'))
     print(find_all_anagrams('abbcabc', 'abc'))

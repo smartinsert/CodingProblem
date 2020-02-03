@@ -3,39 +3,24 @@ from typing import List
 from heapq import *
 
 
-class WordCount:
-    def __init__(self, word):
-        self.word = word
-        self.count = 0
-
-    def update_count(self):
-        self.count += 1
-
-    def __hash__(self):
-        return hash(self.word)
-
-    def __eq__(self, other):
-        return self.word == other.word
-
-    def __gt__(self, other):
-        return self.count > other.count
-
-
 def most_common_word(paragraph: str, banned_words: List[str]):
     banned_words = {word for word in banned_words}
-    words_seen = set()
-    paragraph = re.sub("[^\w\s]", "", paragraph).lower().split(" ")
+    paragraph = paragraph.lower().split(" ")
+    word_to_frequency = dict()
+    most_common_word_heap = []
     for word in paragraph:
+        word = re.sub('[^a-z]', '', word)
         if word in banned_words:
             continue
-        if WordCount(word) not in words_seen:
-            words_seen.add(WordCount(word))
-        else:
-            for word in words_seen:
-                print(word)
-    heapify(words_seen)
-    return heappop(words_seen).word if len(words_seen) > 0 else ''
+        if word not in word_to_frequency:
+            word_to_frequency[word] = 0
+        word_to_frequency[word] += 1
+    for word in word_to_frequency.keys():
+        frequency = word_to_frequency.get(word)
+        most_common_word_heap.append((-1*frequency, word))
+    heapify(most_common_word_heap)
+    return heappop(most_common_word_heap)[1]
 
 
 if __name__ == '__main__':
-    print(most_common_word("Bob hit a ball, the hit BALL flew far after it was hit.", ['hit']))
+    print(most_common_word("Bob hit a ball, the hit BALL flew far after it was hit.", ['ball']))
