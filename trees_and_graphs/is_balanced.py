@@ -19,12 +19,13 @@ def is_tree_balanced(root):
     else:
         return is_tree_balanced(root.left) and is_tree_balanced(root.right)
 
+
 """
 O(N) solution
 """
 
 
-def is_balanced(root):
+def  is_balanced(root):
     return __is_balanced_recursive(root)
 
 

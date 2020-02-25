@@ -7,6 +7,7 @@ Find the min possible cost required to connect all ropes.
 """
 from heapq import heappop, heappush, heapify
 
+
 def min_cost(ropes):
     if not ropes:
         return []
@@ -19,17 +20,20 @@ def min_cost(ropes):
     costs.append(cost_to_connect)
     return sum(costs)
 
+
 def minCost(ropes) -> int:
-  if not ropes: return 0
-  if len(ropes) == 1: return ropes[0]
-  heapify(ropes)
-  cost = 0
-  while len(ropes) > 1:
-    a, b = heappop(ropes), heappop(ropes)
-    cost += a+b
-    if ropes:
-      heappush(ropes, a+b)
-  return cost
+    if not ropes:
+        return 0
+    if len(ropes) == 1:
+        return ropes[0]
+    heapify(ropes)
+    cost = 0
+    while len(ropes) > 1:
+        a, b = heappop(ropes), heappop(ropes)
+        cost += a + b
+        if ropes:
+            heappush(ropes, a + b)
+    return cost
 
 
 if __name__ == '__main__':
