@@ -34,4 +34,10 @@ if __name__ == '__main__':
               [0, 0, 0, 0, 1],
               [0, 1, 0, 0, 0]
               ]
-    print(min_hour(4 ,4, matrix))
+
+    matrix_2 = [[0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 1, 1, 0, 1, 0],
+                [0, 1, 0, 0, 0, 1, 0]
+               ]
+    print(min_hour(3, 7, matrix_2))
+    # print(min_hour(4 ,4, matrix))
