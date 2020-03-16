@@ -6,7 +6,7 @@ def generate_valid_ips(string, curr, all_ips):
         return
 
     def recurse(index):
-        generate_valid_ips(string[index:], curr + [string[0:index]], all_ips)
+        generate_valid_ips(string[index:], curr + [string[:index]], all_ips)
 
     recurse(1)
     first = int(string[0])

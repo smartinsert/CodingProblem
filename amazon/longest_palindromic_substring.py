@@ -10,10 +10,7 @@ def number_of_longest_substring_recursive(sequence, i, j):
         return 1
 
     if sequence[i] == sequence[j] and i + 1 == j:
-        return 2
-
-    if sequence[i] == sequence[j]:
-        return number_of_longest_substring_recursive(sequence, i + 1, j - 1)
+        return 2 + number_of_longest_substring_recursive(sequence, i + 1, j - 1)
 
     return max(number_of_longest_substring_recursive(sequence, i, j-1),
                number_of_longest_substring_recursive(sequence, i + 1, j)
@@ -48,6 +45,6 @@ def longest_palindromic_strings(sequence):
 
 
 if __name__ == '__main__':
-    sequence = 'babad'
+    sequence = 'aaaabaaa'
     print(number_of_longest_substring_recursive(sequence, 0, len(sequence) - 1))
     print(longest_palindromic_strings(sequence))

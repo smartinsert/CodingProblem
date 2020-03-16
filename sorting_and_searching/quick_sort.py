@@ -11,7 +11,6 @@ def quick_sort_recur(arr, first, last):
         pos = partition(arr, first, last)
         arr = quick_sort_recur(arr, first, pos - 1)
         arr = quick_sort_recur(arr, pos + 1, last)
-
     return arr
 
 
