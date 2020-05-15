@@ -13,6 +13,7 @@ Construct the edges of the graph based on the rules laid down by the words then 
 """
 
 
+# Time: O(V+E); Space: O(V+E)
 def correct_ordering(words):
     order, sources = [], []
     in_degrees, graph = {}, {}

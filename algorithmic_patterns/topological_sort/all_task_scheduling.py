@@ -5,6 +5,7 @@ possible ordering of tasks meeting all prerequisites.
 """
 
 
+# Time: O(V!*E); where V is the total number of tasks and E is the number of prerequisites
 def all_possible_task_ordering(tasks, prerequisites):
     all_possible_orderings = []
     if tasks == 0:

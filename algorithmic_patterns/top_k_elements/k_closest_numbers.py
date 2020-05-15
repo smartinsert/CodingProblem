@@ -9,6 +9,7 @@ Output: [6, 7, 8]
 from heapq import *
 
 
+# Time: O(log(N) + K*log(K)); Space: O(logK)
 def k_closest_numbers(arr, k, x):
     if not arr:
         return []

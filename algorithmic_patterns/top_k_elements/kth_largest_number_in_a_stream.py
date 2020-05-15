@@ -9,6 +9,7 @@ class KthLargest:
         for number in initial:
             self.add(number)
 
+    # Time: O(logK); Space: O(K)
     def add(self, number):
         heappush(self.min_heap, number)
         if len(self.min_heap) > self.k:

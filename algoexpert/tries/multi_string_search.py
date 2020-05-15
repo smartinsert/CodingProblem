@@ -30,7 +30,7 @@ def multiStringSearch(bigString, smallStrings):
     result = [False] * len(smallStrings)
     if not smallStrings or not bigString:
         return result
-    trie = Trie(bigString.strip())
+    trie = Trie(bigString)
     for idx, string in enumerate(smallStrings):
         if trie.contains(string):
             result[idx] = True
@@ -68,14 +68,14 @@ def is_in_big_string_helper(big_string, small_string, current_index):
     return True
 
 
-class ModifiedTrie:
-    def __init__(self):
-        self.root = {}
-        self.end_symbol = '*'
-
-    def insert(self, string):
-        current_node = self.root
-        for i in range(len(string)):
+# class ModifiedTrie:
+#     def __init__(self):
+#         self.root = {}
+#         self.end_symbol = '*'
+#
+#     def insert(self, string):
+#         current_node = self.root
+#         for i in range(len(string)):
 
 if __name__ == '__main__':
     print(multiStringSearch('this is a big string', ['this', 'yo', 'is', 'a', 'bigger', 'string', 'kappa']))

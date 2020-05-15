@@ -21,7 +21,7 @@ class Median:
         if len(self.large_number_list) > len(self.small_numbers_list) + 1:
             heappush(self.small_numbers_list, -heappop(self.large_number_list))
         elif len(self.large_number_list) < len(self.small_numbers_list):
-            heappush(self.large_number_list, heappop(self.small_numbers_list))
+            heappush(self.large_number_list, -heappop(self.small_numbers_list))
 
     def find_median(self):
         if not self.large_number_list and not self.small_numbers_list:

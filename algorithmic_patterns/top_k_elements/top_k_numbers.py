@@ -10,6 +10,7 @@ transformed array: [-3, -1, -5, -12, -2, -11]
 from heapq import *
 
 
+# Time: O(l*logK + (N-K)*logK)
 def top_k_numbers(arr, k):
     k_top_numbers = []
     min_heap = []

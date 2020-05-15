@@ -17,7 +17,7 @@ def partitions(s: str) -> List[int]:
     while current < len(s):
         last_occurence_position = character_to_last_position[s[current]]
         i = current + 1
-        while i != last_occurence_position :
+        while i != last_occurence_position:
             last_occurence_position = max(last_occurence_position, character_to_last_position[s[i]])
             i += 1
         paritions.append(i - current + 1)

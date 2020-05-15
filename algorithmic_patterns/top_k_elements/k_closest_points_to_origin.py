@@ -23,6 +23,7 @@ class Point:
         return f'({self.x}, {self.y})'
 
 
+# Time: O(nlog(k)); Space: O(K)
 def k_closest_points(points, k):
     if not points:
         return []

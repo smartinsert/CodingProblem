@@ -52,10 +52,10 @@ def all_occurrences_optimized(text: str, patterns: List[str]) -> Dict[str, List[
 
 
 if __name__ == '__main__':
-    start_time = time.time()
-    print(all_occurrences('catfoxcatacbdcatfox', ['cat', 'fox']))
-    end_time = time.time()
-    print(f'Total time: {(end_time - start_time)}')
+    # start_time = time.time()
+    # print(all_occurrences('catfoxcatacbdcatfox', ['cat', 'fox']))
+    # end_time = time.time()
+    # print(f'Total time: {(end_time - start_time)}')
     start_time = time.time()
     print(all_occurrences_optimized('catfoxcatacbdcatfox', ['cat', 'fox']))
     end_time = time.time()

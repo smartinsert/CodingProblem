@@ -18,6 +18,7 @@ class Meeting:
         return f'[{self.start}, {self.end}]'
 
 
+# Time: O(NlogN); Space: O(N) for sorting
 def min_meeting_rooms(meetings):
     meetings.sort(key=lambda x: x.start)
 

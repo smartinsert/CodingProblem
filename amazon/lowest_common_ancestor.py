@@ -5,6 +5,7 @@ class TreeNode:
         self.right = None
 
 
+#Time: O(h); where h is the height of the tree
 def lowest_common_ancestor(node: TreeNode, p: TreeNode, q: TreeNode) -> int:
     if not node:
         return -1

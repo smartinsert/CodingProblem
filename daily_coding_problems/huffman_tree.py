@@ -60,7 +60,7 @@ def construct_tree_with(nodes: List[TreeNode]) -> TreeNode:
 
 
 def map_characters_to_encoded_binary_strings(htree: TreeNode, character_map, huffman_code=""):
-    if htree. character:
+    if htree.character:
         character_map[htree.character] = huffman_code
         return
     # recurse for left subtree and assign zero value to hcode
