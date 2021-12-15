@@ -14,7 +14,7 @@ def smallest_window(source, pattern):
         right_char = source[window_end]
         if right_char in char_to_frequency:
             char_to_frequency[right_char] -= 1
-            if char_to_frequency[right_char] >= 0:
+            if char_to_frequency[right_char] == 0:
                 matched += 1
 
         while matched == len(pattern):
@@ -35,4 +35,4 @@ def smallest_window(source, pattern):
 
 
 if __name__ == '__main__':
-    print(smallest_window("aabdec", "abc"))
+    print(smallest_window("ADOBECODEBANC", "ABC"))

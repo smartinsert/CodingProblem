@@ -30,7 +30,32 @@ def remove_duplicates_with_key(arr, k):
     return next_element
 
 
+def remove_duplicates_alt(arr):
+    if len(arr) < 2:
+        return len(arr)
+
+    prev, length = arr[0], 1
+    for i in range(1, len(arr)):
+        if arr[i] != prev:
+            length += 1
+        prev = arr[i]
+    return length
+
+
+def remove_duplicates_with_key_alt(arr, k):
+    if not arr:
+        return 0
+    length = len(arr)
+    for number in arr:
+        if number == k:
+            length -= 1
+    return length
+
+
 if __name__ == '__main__':
-    print(remove_duplicates([2, 3, 3, 3, 6, 9, 9]))
-    print(remove_duplicates([2, 2, 2, 11]))
+    # print(remove_duplicates([2, 3, 3, 3, 6, 9, 9]))
+    # print(remove_duplicates([2, 2, 2, 11]))
     print(remove_duplicates_with_key([3, 2, 3, 6, 3, 10, 9, 3], 3))
+
+    # print(remove_duplicates_alt([2, 3, 3, 3, 6, 9, 9]))
+    # print(remove_duplicates_alt([2, 2, 2, 11]))

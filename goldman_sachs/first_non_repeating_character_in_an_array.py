@@ -28,7 +28,6 @@ def find_first_using_map(string: str):
     minimum_index = math.inf
     for idx, character in enumerate(string):
         if character not in character_frequency:
-            character_frequency[character] = 0
             character_frequency[character] = idx
         else:
             character_frequency[character] = -1

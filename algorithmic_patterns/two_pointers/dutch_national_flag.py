@@ -17,14 +17,32 @@ def dutch_flag_sort(arr):
             high -= 1
 
 
+def dutch_flag(arr):
+    if len(arr) < 2:
+        return arr
+    i, low, high = 0, 0, len(arr) - 1
+    while i <= high:
+        if arr[i] == 0:
+            arr[low], arr[i] = arr[i], arr[low]
+            low += 1
+            i += 1
+        elif arr[i] == 1:
+            i += 1
+        else:
+            arr[high], arr[i] = arr[i], arr[high]
+            high -= 1
+    return arr
+
+
 def main():
-    arr = [1, 0, 2, 1, 0]
-    dutch_flag_sort(arr)
-    print(arr)
+    # arr = [1, 0, 2, 1, 0]
+    # # dutch_flag_sort(arr)
+    # print(dutch_flag(arr))
+    # print(arr)
 
     arr = [2, 2, 0, 1, 2, 0]
-    dutch_flag_sort(arr)
-    print(arr)
+    print(dutch_flag(arr))
+    # print(arr)
 
 
 main()
